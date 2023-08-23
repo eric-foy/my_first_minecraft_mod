@@ -2,6 +2,7 @@ package foy.firstmod.init;
 
 import foy.firstmod.FirstModMain;
 
+import foy.firstmod.items.FuelItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -28,6 +29,9 @@ public class ItemInit {
                             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 200, 0), 0.5F)
                             .alwaysEat()
                             .build())));
+
+    public static final RegistryObject<Item> GAS = ITEMS.register("gas",
+            () -> new FuelItem(new Item.Properties().tab(ModCreativeTab.instance), 100));
 
     public static class ModCreativeTab extends CreativeModeTab {
 
