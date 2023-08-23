@@ -2,6 +2,9 @@ package foy.firstmod.init;
 
 import foy.firstmod.FirstModMain;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +19,15 @@ public class ItemInit {
 
     public static final RegistryObject<Item> FOYSWORD = ITEMS.register("foysword",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.instance)));
+
+    public static final RegistryObject<Item> FOYCOOKIE = ITEMS.register("foycookie",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.instance)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(2)
+                            .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 200, 0), 0.5F)
+                            .alwaysEat()
+                            .build())));
 
     public static class ModCreativeTab extends CreativeModeTab {
 
